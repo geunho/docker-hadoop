@@ -1,0 +1,11 @@
+version: "3"
+
+services:
+  namenode:
+    image: geunho/hadoop-namenode:2.9.2
+    container_name: namenode
+    volumes:
+      - hadoop_namenode:/opt/hadoop/dfs/name
+  
+volumes:
+  hadoop_namenode:
