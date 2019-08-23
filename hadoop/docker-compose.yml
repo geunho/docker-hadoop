@@ -7,6 +7,30 @@ services:
     hostname: namenode
     volumes:
       - hadoop_namenode:/opt/hadoop/dfs/name
+
+  datanode01:
+    image: geunho/hadoop-datanode:2.9.2
+    container_name: datanode01
+    hostname: datanode01
+    volumes:
+      - hadoop_datanode01:/opt/hadoop/dfs/data
+      
+  datanode02:
+    image: geunho/hadoop-namenode:2.9.2
+    container_name: datanode02
+    hostname: datanode02
+    volumes:
+      - hadoop_datanode02:/opt/hadoop/dfs/data
+      
+  datanode03:
+    image: geunho/hadoop-namenode:2.9.2
+    container_name: datanode03
+    hostname: datanode03
+    volumes:
+      - hadoop_datanode03:/opt/hadoop/dfs/data      
     
 volumes:
   hadoop_namenode:
+  hadoop_datanode01:
+  hadoop_datanode02:
+  hadoop_datanode03:
