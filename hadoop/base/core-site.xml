@@ -19,7 +19,7 @@
 <configuration>
   <property>
     <name>fs.defaultFS</name>
-    <value>hdfs://namenode:50070/</value>
+    <value>hdfs://namenode:9000/</value>
     <description>NameNode URI
     </description>
   </property>
