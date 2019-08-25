@@ -1,8 +1,8 @@
-FROM azul/zulu-openjdk-alpine:8
+FROM azul/zulu-openjdk:8
 
 LABEL maintainer="Geunho Kim <geunho.dev@gmail.com>"
 
-RUN apk update && apk add --no-cache bash curl 
+RUN apt-get update && apt-get install -y bash curl 
 
 ENV HADOOP_VERSION=2.9.2
 ENV HADOOP_URL=http://mirror.apache-kr.org/hadoop/common/hadoop-$HADOOP_VERSION/hadoop-$HADOOP_VERSION.tar.gz
@@ -22,4 +22,5 @@ ADD core-site.xml /etc/hadoop/
 ENV HADOOP_PREFIX=/opt/hadoop
 ENV HADOOP_CONF_DIR=/etc/hadoop
 ENV PATH $HADOOP_PREFIX/bin/:$PATH
+ENV JAVA_HOME /usr/lib/jvm/zulu-8-amd64
 

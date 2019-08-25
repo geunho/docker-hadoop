@@ -6,31 +6,41 @@ services:
     container_name: namenode
     hostname: namenode
     volumes:
-      - hadoop_namenode:/opt/hadoop/dfs/name
+      - namenode:/opt/hadoop/dfs/name
+    networks:
+        - bridge  
 
   datanode01:
     image: geunho/hadoop-datanode:2.9.2
     container_name: datanode01
     hostname: datanode01
     volumes:
-      - hadoop_datanode01:/opt/hadoop/dfs/data
+      - datanode01:/opt/hadoop/dfs/data
+    networks:
+        - bridge  
       
   datanode02:
-    image: geunho/hadoop-namenode:2.9.2
+    image: geunho/hadoop-datanode:2.9.2
     container_name: datanode02
     hostname: datanode02
     volumes:
-      - hadoop_datanode02:/opt/hadoop/dfs/data
+      - datanode02:/opt/hadoop/dfs/data
+    networks:
+        - bridge  
       
   datanode03:
-    image: geunho/hadoop-namenode:2.9.2
+    image: geunho/hadoop-datanode:2.9.2
     container_name: datanode03
     hostname: datanode03
     volumes:
-      - hadoop_datanode03:/opt/hadoop/dfs/data      
+      - datanode03:/opt/hadoop/dfs/data
+    networks:
+        - bridge  
     
 volumes:
-  hadoop_namenode:
-  hadoop_datanode01:
-  hadoop_datanode02:
-  hadoop_datanode03:
+  namenode:
+  datanode01:
+  datanode02:
+  datanode03:
+networks:
+  bridge:
