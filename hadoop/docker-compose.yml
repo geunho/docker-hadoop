@@ -36,7 +36,18 @@ services:
       - datanode03:/opt/hadoop/dfs/data
     networks:
         - bridge  
-    
+  
+  proxy:
+    image: geunho/hadoop-proxy:latest
+    container_name: proxy
+    hostname: proxy
+    networks:
+      - bridge
+    ports:
+      - "50070:50070"
+      - "50075:50075"
+    command: [nginx-debug, '-g', 'daemon off;']  
+        
 volumes:
   namenode:
   datanode01:
