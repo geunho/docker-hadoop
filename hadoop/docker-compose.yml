@@ -46,6 +46,7 @@ services:
     ports:
       - "50070:50070"
       - "50075:50075"
+      - "9000:9000"
     command: [nginx-debug, '-g', 'daemon off;']  
         
 volumes:
