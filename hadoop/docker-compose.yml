@@ -9,7 +9,20 @@ services:
       - namenode:/opt/hadoop/dfs/name
       - /tmp:/tmp
     networks:
-        - bridge  
+        - bridge
+
+  resourcemanager:
+    image: geunho/hadoop-resourcemanager:2.9.2
+    container_name: resourcemanager
+    hostname: resourcemanager
+    networks:
+      - bridge
+    ports:
+      - 8088:8088
+      - 8025:8025
+      - 8030:8030
+      - 8141:8141
+      - 8050:8050
 
   datanode01:
     image: geunho/hadoop-datanode:2.9.2
@@ -18,8 +31,17 @@ services:
     volumes:
       - datanode01:/opt/hadoop/dfs/data
     networks:
-        - bridge  
-      
+        - bridge
+
+  nodemanager01:
+    image: geunho/hadoop-nodemanager:2.9.2
+    container_name: nodemanager01
+    hostname: nodemanager01
+    volumes:
+      - datanode01:/opt/hadoop/dfs/data
+    networks:
+      - bridge
+
   datanode02:
     image: geunho/hadoop-datanode:2.9.2
     container_name: datanode02
@@ -27,8 +49,17 @@ services:
     volumes:
       - datanode02:/opt/hadoop/dfs/data
     networks:
-        - bridge  
-      
+        - bridge
+
+  nodemanager02:
+    image: geunho/hadoop-nodemanager:2.9.2
+    container_name: nodemanager02
+    hostname: nodemanager02
+    volumes:
+      - datanode02:/opt/hadoop/dfs/data
+    networks:
+      - bridge
+            
   datanode03:
     image: geunho/hadoop-datanode:2.9.2
     container_name: datanode03
@@ -36,7 +67,16 @@ services:
     volumes:
       - datanode03:/opt/hadoop/dfs/data
     networks:
-        - bridge  
+        - bridge
+
+  nodemanager03:
+    image: geunho/hadoop-nodemanager:2.9.2
+    container_name: nodemanager03
+    hostname: nodemanager03
+    volumes:
+      - datanode03:/opt/hadoop/dfs/data
+    networks:
+      - bridge
   
   proxy:
     image: geunho/hadoop-proxy:latest
@@ -48,7 +88,8 @@ services:
       - "50070:50070"
       - "50075:50075"
       - "9000:9000"
-    command: [nginx-debug, '-g', 'daemon off;']  
+      - "8042:8042"
+    command: [nginx-debug, '-g', 'daemon off;']
         
 volumes:
   namenode:

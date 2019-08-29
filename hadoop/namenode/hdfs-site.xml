@@ -26,7 +26,7 @@
   <property>
     <name>dfs.hosts</name>
     <value>datanode01,datanode02,datanode03</value>
-    <description>List of permitted DataNodes.	
+    <description>List of permitted DataNodes. (can be changed to a file path in namenode local file systemß)	
     </description>
   </property>
   <property>
