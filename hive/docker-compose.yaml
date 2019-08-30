@@ -1,0 +1,17 @@
+version: "3"
+
+services:
+  hiveserver2:
+    image: geunho/hive-server2:2.3.6
+    container_name: hiveserver2
+    hostname: hiveserver2
+    volumes:
+      - hiveserver2:/metastore_db
+
+volumes:
+  hiveserver2:
+            
+networks:
+  default:
+    external:
+      name: hadoop_bridge

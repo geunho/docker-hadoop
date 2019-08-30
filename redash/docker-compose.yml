@@ -44,7 +44,7 @@ services:
     env_file: /opt/redash/env
     volumes:
       - redash_postgres:/var/lib/postgresql/data
-    
+
   nginx:
     image: redash/nginx:latest
     ports:
@@ -53,3 +53,11 @@ services:
       - server
     links:
       - server:redash
+
+volumes:
+  redash_postgres:
+          
+networks:
+  default:
+    external:
+      name: hadoop_bridge

@@ -96,5 +96,6 @@ volumes:
   datanode01:
   datanode02:
   datanode03:
+  
 networks:
   bridge:
