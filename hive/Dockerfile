@@ -13,7 +13,7 @@ RUN curl -fSL "$HIVE_URL" -o /tmp/hive.tar.gz \
     && rm /tmp/hive.tar.gz
 
 RUN ln -s /opt/apache-hive-$HIVE_VERSION-bin /opt/hive \
-    & mkdir /opt/hive/data
+    && mkdir /opt/hive/data
 
 ENV HIVE_HOME /opt/hive
 ENV HIVE_CONF_DIR $HIVE_HOME/conf
@@ -28,4 +28,4 @@ RUN chmod a+x /start.sh
 
 EXPOSE 10000
 
-CMD ["/start.sh", "$HIVE_HOME/data/metastore_db"]
+CMD ["/start.sh", "/opt/hive/data/metastore_db"]

@@ -6,7 +6,7 @@ services:
     container_name: hiveserver2
     hostname: hiveserver2
     volumes:
-      - hiveserver2:/metastore_db
+      - hiveserver2:/opt/hive/data
 
 volumes:
   hiveserver2:
