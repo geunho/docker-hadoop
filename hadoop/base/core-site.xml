@@ -24,12 +24,6 @@
     </description>
   </property>
   <property>
-    <name>io.file.buffer.size</name>
-    <value>131072</value>
-    <description>Size of read/write buffer used in SequenceFiles.
-    </description>
-  </property>
-  <property>
     <name>hadoop.proxyuser.root.hosts</name>
     <value>*</value>
   </property>

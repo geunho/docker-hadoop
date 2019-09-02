@@ -30,5 +30,24 @@
     <value>mapreduce_shuffle</value>
     <description>A comma separated list of services where service name should only contain a-zA-Z0-9_ and can not start with numbers
     </description>
-  </property>  
+  </property>
+
+  <property>
+    <name>yarn.nodemanager.resource.memory-mb</name>
+    <value>2048</value>
+    <description>Amount of physical memory, in MB, that can be allocated for containers.
+    </description>
+  </property>
+  <property>
+    <name>yarn.scheduler.minimum-allocation-mb</name>
+    <value>128</value>
+    <description>The minimum allocation for every container request at the RM, in MBs.
+    </description>
+  </property>
+  <property>
+    <name>yarn.scheduler.maximum-allocation-mb</name>
+    <value>256</value>
+    <description>The maximum allocation for every container request at the RM, in MBs.
+    </description>
+  </property>    
 </configuration>

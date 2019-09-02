@@ -19,6 +19,7 @@ RUN ln -s /opt/hadoop-$HADOOP_VERSION /opt/hadoop \
 
 ADD core-site.xml /etc/hadoop/
 ADD mapred-site.xml /etc/hadoop/
+ADD hdfs-site.xml /etc/hadoop/
 
 ENV HADOOP_PREFIX=/opt/hadoop
 ENV HADOOP_CONF_DIR=/etc/hadoop

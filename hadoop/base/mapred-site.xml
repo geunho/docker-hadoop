@@ -25,31 +25,31 @@
   </property>
   <property>
     <name>mapreduce.map.memory.mb</name>
-    <value>64</value>
+    <value>32</value>
     <description>Larger resource limit for maps.
     </description>
   </property>
   <property>
     <name>mapreduce.map.java.opts</name>
-    <value>-Xmx16M</value>
+    <value>-Xmx30m</value>
     <description>
     </description>
   </property>
   <property>
     <name>mapreduce.reduce.memory.mb</name>
-    <value>128</value>
+    <value>64</value>
     <description>Larger resource limit for reduces.
     </description>
   </property>
   <property>
     <name>mapreduce.reduce.java.opts</name>
-    <value>-Xmx64M</value>
+    <value>-Xmx60m</value>
     <description>
     </description>
   </property>
   <property>
     <name>mapreduce.task.io.sort.mb</name>
-    <value>24</value>
+    <value>12</value>
     <description>Higher memory-limit while sorting data for efficiency.
     </description>
   </property>
