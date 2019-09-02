@@ -77,6 +77,17 @@ services:
       - datanode03:/opt/hadoop/dfs/data
     networks:
       - bridge
+
+  historyserver:
+    image: geunho/hadoop-historyserver:2.9.2
+    container_name: historyserver
+    hostname: historyserver
+    volumes:
+      - historyserver:/opt/hadoop/yarn/timeline
+    networks:
+      - bridge
+    ports:
+      - 8188:8188
   
   proxy:
     image: geunho/hadoop-proxy:latest
@@ -96,6 +107,7 @@ volumes:
   datanode01:
   datanode02:
   datanode03:
+  historyserver:
   
 networks:
   bridge:

@@ -37,4 +37,16 @@
     <description>Path to file with nodes to include.
     </description>
   </property>
+  <property>
+    <name>yarn.timeline-service.enabled</name>
+    <value>true</value>
+  </property>
+  <property>
+    <name>yarn.timeline-service.hostname</name>
+    <value>historyserver</value>
+  </property>
+  <property>
+    <name>yarn.log.server.url</name>
+    <value>http://${yarn.timeline-service.hostname}:8188/applicationhistory/logs</value>
+  </property>      
 </configuration>

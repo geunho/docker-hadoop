@@ -31,7 +31,19 @@
     <description>A comma separated list of services where service name should only contain a-zA-Z0-9_ and can not start with numbers
     </description>
   </property>
-
+  <property>
+    <name>yarn.timeline-service.enabled</name>
+    <value>true</value>
+  </property>
+  <property>
+    <name>yarn.timeline-service.hostname</name>
+    <value>historyserver</value>
+  </property>
+  <property>
+    <name>yarn.log.server.url</name>
+    <value>http://${yarn.timeline-service.hostname}:8188/applicationhistory/logs</value>
+  </property>
+    
   <property>
     <name>yarn.nodemanager.resource.memory-mb</name>
     <value>2048</value>
