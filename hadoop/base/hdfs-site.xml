@@ -38,4 +38,11 @@
       connecting to other datanodes for data transfer.
     </description>
   </property>
+
+  <property>
+    <name>dfs.permissions.enabled</name>
+    <value>false</value>
+    <description>Set false for test environment.
+    </description>
+  </property>
 </configuration>
