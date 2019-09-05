@@ -40,5 +40,18 @@
   <property>
     <name>yarn.log.server.url</name>
     <value>http://${yarn.timeline-service.hostname}:8188/applicationhistory/logs</value>
+  
+  </property>
+  <property>    
+    <name>yarn.timeline-service.http-cross-origin.enabled</name>
+    <value>true</value>
+    <description>Enables cross-origin support (CORS) for web services where
+    cross-origin web response headers are needed.
+    </description>
+  </property>
+  <property>
+    <description>Publish YARN information to Timeline Server</description>
+    <name> yarn.resourcemanager.system-metrics-publisher.enabled</name>
+    <value>true</value>
   </property>
 </configuration>

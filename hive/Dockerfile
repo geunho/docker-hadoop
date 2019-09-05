@@ -4,9 +4,10 @@ LABEL maintainer="Geunho Kim <geunho.dev@gmail.com>"
 
 RUN apt-get update && apt-get install -y bash curl 
 
-ENV HIVE_VERSION=2.3.6
-ENV HIVE_URL=https://www-us.apache.org/dist/hive/hive-$HIVE_VERSION/apache-hive-$HIVE_VERSION-bin.tar.gz
+ENV HIVE_VERSION=2.3.5
+ENV HIVE_URL=http://mirror.apache-kr.org/hive/hive-$HIVE_VERSION/apache-hive-$HIVE_VERSION-bin.tar.gz
 # http://mirror.apache-kr.org/hive/ kr mirror가 있긴한데.. 동기화가 조금 늦는듯 함
+# origin: https://www-us.apache.org/dist/hive/hive-$HIVE_VERSION/apache-hive-$HIVE_VERSION-bin.tar.gz
 
 RUN curl -fSL "$HIVE_URL" -o /tmp/hive.tar.gz \
     && tar -xvf /tmp/hive.tar.gz -C /opt/ \

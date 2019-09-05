@@ -15,7 +15,7 @@ docker_build() {
     fi
 }
 
-docker_build base
+docker_build base --no-cache
 docker_build namenode --no-cache
 docker_build datanode --no-cache
 docker_build resourcemanager --no-cache
