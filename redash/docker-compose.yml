@@ -4,11 +4,12 @@ x-redash-service: &redash-service
   depends_on:
     - postgres
     - redis
-  env_file: /opt/redash/env
+  env_file: env
 
 services:
   server:
     <<: *redash-service
+    container_name: redash_server
     command: server
     ports:
       - "5000:5000"
@@ -17,6 +18,7 @@ services:
 
   scheduler:
     <<: *redash-service
+    container_name: redash_scheduler
     command: scheduler
     environment:
       QUEUES: "celery"
@@ -24,6 +26,7 @@ services:
 
   scheduled_worker:
     <<: *redash-service
+    container_name: redash_scheduled_worker
     command: worker
     environment:
       QUEUES: "scheduled_queries,schemas"
@@ -31,22 +34,26 @@ services:
 
   adhoc_worker:
     <<: *redash-service
+    container_name: redash_adhoc_worker
     command: worker
     environment:
       QUEUES: "queries"
       WORKERS_COUNT: 2
 
-  redis:
+  redis:    
     image: redis:5.0-alpine
+    container_name: redash_redis
 
   postgres:
     image: postgres:9.5-alpine
-    env_file: /opt/redash/env
+    container_name: redash_postgres
+    env_file: env
     volumes:
-      - redash_postgres:/var/lib/postgresql/data
+      - postgres:/var/lib/postgresql/data
 
   nginx:
     image: redash/nginx:latest
+    container_name: redash_nginx
     ports:
       - "80:80"
     depends_on:
@@ -55,7 +62,7 @@ services:
       - server:redash
 
 volumes:
-  redash_postgres:
+  postgres:
           
 networks:
   default:

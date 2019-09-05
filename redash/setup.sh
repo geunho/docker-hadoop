@@ -15,12 +15,12 @@
 
 set -eu
 
-REDASH_BASE_PATH=/opt/redash
+SCRIPT_PATH="$( cd "$(dirname "$0")" ; pwd -P )"
+REDASH_BASE_PATH=$SCRIPT_PATH/.redash
 
 create_directories() {
     if [[ ! -e $REDASH_BASE_PATH ]]; then
-        sudo mkdir -p $REDASH_BASE_PATH
-        sudo chown $USER $REDASH_BASE_PATH
+        mkdir -p $REDASH_BASE_PATH
     fi
 
     if [[ ! -e $REDASH_BASE_PATH/postgres-data ]]; then
@@ -57,15 +57,13 @@ setup_compose() {
     
     gsed -ri "s/image: redash\/redash:([A-Za-z0-9.-]*)/image: redash\/redash:$LATEST_VERSION/" docker-compose.yml
     
-    echo "export COMPOSE_PROJECT_NAME=redash" >> ~/.profile
-    echo "export COMPOSE_FILE=$REDASH_BASE_PATH/docker-compose.yml" >> ~/.profile
     export COMPOSE_PROJECT_NAME=redash
     export COMPOSE_FILE=$REDASH_BASE_PATH/docker-compose.yml
 
     # init database
-    sudo docker-compose run --rm server create_db
-
-    sudo docker-compose up -d
+    docker-compose run --rm server create_db
+    
+    docker-compose up -d
 }
 
 create_directories
