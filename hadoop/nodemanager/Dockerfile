@@ -1,4 +1,4 @@
-FROM geunho/hadoop-base:2.9.2
+FROM geunho/hadoop-base:2.7.2
 
 LABEL maintainer="Geunho Kim <geunho.dev@gmail.com>"
 

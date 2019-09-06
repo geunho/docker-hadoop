@@ -31,5 +31,9 @@
     <name>hadoop.proxyuser.root.groups</name>
     <value>*</value>
   </property>
+  <property>
+    <name>hadoop.http.filter.initializers</name>
+    <value>org.apache.hadoop.http.lib.StaticUserWebFilter,org.apache.hadoop.security.HttpCrossOriginFilterInitializer</value>
+  </property>
 
 </configuration>

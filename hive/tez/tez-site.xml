@@ -18,7 +18,7 @@
 <configuration>
   <property>
     <name>tez.lib.uris</name>
-    <value>${fs.defaultFS}/apps/tez/,${fs.defaultFS}/apps/tez/lib</value>
+    <value>${fs.defaultFS}/apps/tez/tez.tar.gz</value>
     <description> The location of the Tez libraries which will be localized for DAGs.
     </description>
   </property>
@@ -44,7 +44,7 @@
 
   <property>
     <name>tez.tez-ui.history-url.base</name>
-    <value>http://tez-ui:8080/tez-ui</value>
+    <value>http://tez:8080/tez-ui</value>
     <description>URL for where the Tez UI is hosted
     </description>
   </property>

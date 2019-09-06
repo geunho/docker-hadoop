@@ -1,4 +1,4 @@
-FROM geunho/hadoop-base:2.9.2
+FROM geunho/hadoop-base:2.7.2
 
 LABEL maintainer="Geunho Kim <geunho.dev@gmail.com>"
 
@@ -14,7 +14,8 @@ RUN curl -fSL "$HIVE_URL" -o /tmp/hive.tar.gz \
     && rm /tmp/hive.tar.gz
 
 RUN ln -s /opt/apache-hive-$HIVE_VERSION-bin /opt/hive \
-    && mkdir /opt/hive/data
+    && mkdir /opt/hive/data \
+    && mkdir /opt/tez
 
 ENV HIVE_HOME /opt/hive
 ENV HIVE_CONF_DIR $HIVE_HOME/conf
@@ -22,6 +23,8 @@ ENV PATH $HIVE_HOME/bin:$PATH
 ENV JAVA_HOME /usr/lib/jvm/zulu-8-amd64
 
 ADD hive-site.xml $HIVE_CONF_DIR/
+ADD hive-env.sh $HIVE_CONF_DIR/
+
 ADD yarn-site.xml $HADOOP_CONF_DIR/
 
 ADD start.sh /start.sh

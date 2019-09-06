@@ -2,7 +2,7 @@ version: "3"
 
 services:
   namenode:
-    image: geunho/hadoop-namenode:2.9.2
+    image: geunho/hadoop-namenode:2.7.2
     container_name: namenode
     hostname: namenode
     volumes:
@@ -12,7 +12,7 @@ services:
         - bridge
 
   resourcemanager:
-    image: geunho/hadoop-resourcemanager:2.9.2
+    image: geunho/hadoop-resourcemanager:2.7.2
     container_name: resourcemanager
     hostname: resourcemanager
     networks:
@@ -25,16 +25,17 @@ services:
       - 8050:8050
 
   datanode01:
-    image: geunho/hadoop-datanode:2.9.2
+    image: geunho/hadoop-datanode:2.7.2
     container_name: datanode01
     hostname: datanode01
     volumes:
       - datanode01:/opt/hadoop/dfs/data
+      - hive_tez_lib:/opt/tez
     networks:
         - bridge
 
   nodemanager01:
-    image: geunho/hadoop-nodemanager:2.9.2
+    image: geunho/hadoop-nodemanager:2.7.2
     container_name: nodemanager01
     hostname: nodemanager01
     volumes:
@@ -43,16 +44,17 @@ services:
       - bridge
 
   datanode02:
-    image: geunho/hadoop-datanode:2.9.2
+    image: geunho/hadoop-datanode:2.7.2
     container_name: datanode02
     hostname: datanode02
     volumes:
       - datanode02:/opt/hadoop/dfs/data
+      - hive_tez_lib:/opt/tez
     networks:
         - bridge
 
   nodemanager02:
-    image: geunho/hadoop-nodemanager:2.9.2
+    image: geunho/hadoop-nodemanager:2.7.2
     container_name: nodemanager02
     hostname: nodemanager02
     volumes:
@@ -61,16 +63,17 @@ services:
       - bridge
             
   datanode03:
-    image: geunho/hadoop-datanode:2.9.2
+    image: geunho/hadoop-datanode:2.7.2
     container_name: datanode03
     hostname: datanode03
     volumes:
       - datanode03:/opt/hadoop/dfs/data
+      - hive_tez_lib:/opt/tez
     networks:
         - bridge
 
   nodemanager03:
-    image: geunho/hadoop-nodemanager:2.9.2
+    image: geunho/hadoop-nodemanager:2.7.2
     container_name: nodemanager03
     hostname: nodemanager03
     volumes:
@@ -79,7 +82,7 @@ services:
       - bridge
 
   historyserver:
-    image: geunho/hadoop-historyserver:2.9.2
+    image: geunho/hadoop-historyserver:2.7.2
     container_name: historyserver
     hostname: historyserver
     volumes:
@@ -108,6 +111,8 @@ volumes:
   datanode02:
   datanode03:
   historyserver:
+  hive_tez_lib:
+    external: true
   
 networks:
   bridge:

@@ -18,9 +18,12 @@ RUN apt-get install -y zip \
 
 RUN curl -fSL "$TEZ_URL" -o /tmp/tez.tar.gz \
     && tar -xvf /tmp/tez.tar.gz -C /tmp/ \
-    && cp /tmp/apache-tez-$TEZ_VERSION-bin/tez-ui-$TEZ_VERSION.war /tmp/tez-ui.war \
+    && cp -r /tmp/apache-tez-$TEZ_VERSION-bin /opt/tez \
+    && cp /opt/tez/tez-ui-$TEZ_VERSION.war /tmp/tez-ui.war \
     && cd /tmp \ 
     && zip -u tez-ui.war config/configs.env \
     && cp tez-ui.war /usr/local/tomcat/webapps/ \
     && rm /tmp/tez.tar.gz \
     && rm -rf /tmp/apache-tez-$TEZ_VERSION-bin
+
+ADD tez-site.xml /opt/tez/conf/
