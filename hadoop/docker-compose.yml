@@ -30,7 +30,6 @@ services:
     hostname: datanode01
     volumes:
       - datanode01:/opt/hadoop/dfs/data
-      - hive_tez_lib:/opt/tez
     networks:
         - bridge
 
@@ -50,7 +49,6 @@ services:
     hostname: datanode02
     volumes:
       - datanode02:/opt/hadoop/dfs/data
-      - hive_tez_lib:/opt/tez
     networks:
         - bridge
 
@@ -70,7 +68,6 @@ services:
     hostname: datanode03
     volumes:
       - datanode03:/opt/hadoop/dfs/data
-      - hive_tez_lib:/opt/tez
     networks:
         - bridge
 

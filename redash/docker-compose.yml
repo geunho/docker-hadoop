@@ -4,7 +4,7 @@ x-redash-service: &redash-service
   depends_on:
     - postgres
     - redis
-  env_file: env
+  env_file: .redash/env
 
 services:
   server:
@@ -43,11 +43,15 @@ services:
   redis:    
     image: redis:5.0-alpine
     container_name: redash_redis
+    ports:
+      - "6379:6379"
 
   postgres:
     image: postgres:9.5-alpine
     container_name: redash_postgres
-    env_file: env
+    env_file: .redash/env
+    ports:
+      - "5432:5432"
     volumes:
       - postgres:/var/lib/postgresql/data
 
