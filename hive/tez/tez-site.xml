@@ -24,13 +24,13 @@
   </property>
   <property>
     <name>tez.use.cluster.hadoop-libs</name>
-    <value>true</value>
+    <value>false</value>
     <description>Specify whether hadoop libraries required to run Tez should be the ones deployed on the cluster.
     </description>
   </property>
   <property>
     <name>tez.am.resource.memory.mb</name>
-    <value>512</value>
+    <value>2048</value>
     <description>The amount of memory in MB to be used by the AppMaster
     </description>
   </property>

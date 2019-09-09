@@ -22,6 +22,9 @@ ADD core-site.xml /etc/hadoop/
 ADD mapred-site.xml /etc/hadoop/
 ADD hdfs-site.xml /etc/hadoop/
 
+ADD hadoop-env.sh /etc/hadoop/
+ADD yarn-env.sh /etc/hadoop/
+
 ENV HADOOP_PREFIX=/opt/hadoop
 ENV HADOOP_CONF_DIR=/etc/hadoop
 ENV PATH $HADOOP_PREFIX/bin/:$PATH

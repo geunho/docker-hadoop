@@ -16,8 +16,8 @@ docker_build() {
 }
 
 docker_build base
-docker_build namenode
-docker_build datanode
-docker_build resourcemanager
-docker_build nodemanager
-docker_build historyserver
+docker_build namenode --no-cache
+docker_build datanode --no-cache
+docker_build resourcemanager --no-cache
+docker_build nodemanager --no-cache
+docker_build historyserver --no-cache
