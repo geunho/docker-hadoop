@@ -85,8 +85,6 @@ services:
     image: geunho/hadoop-historyserver:2.7.2
     container_name: historyserver
     hostname: historyserver
-    volumes:
-      - historyserver:/opt/hadoop/yarn/timeline
     networks:
       - bridge
     ports:
