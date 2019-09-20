@@ -12,6 +12,6 @@ ADD hadoop-env.sh /etc/hadoop/
 ADD start.sh /start.sh
 RUN chmod a+x /start.sh
 
-EXPOSE 50075
+EXPOSE 50075 50010
 
 CMD ["/start.sh"]

@@ -2,7 +2,7 @@ FROM azul/zulu-openjdk:8
 
 LABEL maintainer="Geunho Kim <geunho.dev@gmail.com>"
 
-RUN apt-get update && apt-get install -y bash curl 
+RUN apt-get update && apt-get install -y curl 
 
 ENV HADOOP_VERSION=2.7.2
 #ENV HADOOP_URL=http://mirror.apache-kr.org/hadoop/common/hadoop-$HADOOP_VERSION/hadoop-$HADOOP_VERSION.tar.gz

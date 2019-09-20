@@ -24,14 +24,17 @@ services:
       - 8141:8141
       - 8050:8050
 
-  datanode01:
+  x-datanode_base: &datanode_base
     image: geunho/hadoop-datanode:2.7.2
+    networks:
+      - bridge
+
+  datanode01:
+    <<: *datanode_base
     container_name: datanode01
     hostname: datanode01
     volumes:
       - datanode01:/opt/hadoop/dfs/data
-    networks:
-        - bridge
 
   nodemanager01:
     image: geunho/hadoop-nodemanager:2.7.2
@@ -44,13 +47,11 @@ services:
       - bridge
 
   datanode02:
-    image: geunho/hadoop-datanode:2.7.2
+    <<: *datanode_base
     container_name: datanode02
     hostname: datanode02
     volumes:
       - datanode02:/opt/hadoop/dfs/data
-    networks:
-        - bridge
 
   nodemanager02:
     image: geunho/hadoop-nodemanager:2.7.2
@@ -63,13 +64,11 @@ services:
       - bridge
             
   datanode03:
-    image: geunho/hadoop-datanode:2.7.2
+    <<: *datanode_base
     container_name: datanode03
     hostname: datanode03
     volumes:
       - datanode03:/opt/hadoop/dfs/data
-    networks:
-        - bridge
 
   nodemanager03:
     image: geunho/hadoop-nodemanager:2.7.2
