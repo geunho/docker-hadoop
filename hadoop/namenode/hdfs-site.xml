@@ -24,15 +24,9 @@
     </description>
   </property>
   <property>
-    <name>dfs.hosts</name>
-    <value>datanode01,datanode02,datanode03</value>
-    <description>List of permitted DataNodes. (can be changed to a file path in namenode local file systemß)	
-    </description>
-  </property>
-  <property>
     <name>dfs.blocksize</name>
-    <value>1048576</value>
-    <description>HDFS blocksize. (of 1mb for small test environment file system)
+    <value>10485760</value>
+    <description>default HDFS blocksize. (of 10mb for small test environment file system)
     </description>
   </property>
   <property>

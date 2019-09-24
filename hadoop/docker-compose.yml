@@ -1,4 +1,14 @@
-version: "3"
+version: "3.4"
+
+x-datanode_base: &datanode_base
+  image: geunho/hadoop-datanode:2.7.2
+  networks:
+    - bridge
+
+x-nodemanager_base: &nodemanager_base
+  image: geunho/hadoop-nodemanager:2.7.2
+  networks:
+    - bridge
 
 services:
   namenode:
@@ -24,27 +34,19 @@ services:
       - 8141:8141
       - 8050:8050
 
-  x-datanode_base: &datanode_base
-    image: geunho/hadoop-datanode:2.7.2
-    networks:
-      - bridge
-
   datanode01:
     <<: *datanode_base
     container_name: datanode01
     hostname: datanode01
     volumes:
       - datanode01:/opt/hadoop/dfs/data
-
+    
   nodemanager01:
-    image: geunho/hadoop-nodemanager:2.7.2
+    <<: *nodemanager_base
     container_name: nodemanager01
     hostname: nodemanager01
     volumes:
       - datanode01:/opt/hadoop/dfs/data
-      - hive_tez_lib:/opt/tez      
-    networks:
-      - bridge
 
   datanode02:
     <<: *datanode_base
@@ -54,14 +56,11 @@ services:
       - datanode02:/opt/hadoop/dfs/data
 
   nodemanager02:
-    image: geunho/hadoop-nodemanager:2.7.2
+    <<: *nodemanager_base
     container_name: nodemanager02
     hostname: nodemanager02
     volumes:
       - datanode02:/opt/hadoop/dfs/data
-      - hive_tez_lib:/opt/tez
-    networks:
-      - bridge
             
   datanode03:
     <<: *datanode_base
@@ -71,14 +70,11 @@ services:
       - datanode03:/opt/hadoop/dfs/data
 
   nodemanager03:
-    image: geunho/hadoop-nodemanager:2.7.2
+    <<: *nodemanager_base
     container_name: nodemanager03
     hostname: nodemanager03
     volumes:
       - datanode03:/opt/hadoop/dfs/data
-      - hive_tez_lib:/opt/tez
-    networks:
-      - bridge
 
   historyserver:
     image: geunho/hadoop-historyserver:2.7.2
@@ -96,10 +92,10 @@ services:
     networks:
       - bridge
     ports:
-      - "50070:50070"
-      - "50075:50075"
-      - "9000:9000"
-      - "8042:8042"
+      - 50070:50070
+      - 50075:50075
+      - 9000:9000
+      - 8042:8042
     command: [nginx-debug, '-g', 'daemon off;']
         
 volumes:
@@ -108,8 +104,6 @@ volumes:
   datanode02:
   datanode03:
   historyserver:
-  hive_tez_lib:
-    external: true
   
 networks:
   bridge:
